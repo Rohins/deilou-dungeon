@@ -1,0 +1,23 @@
+<div class="card {{suite}}" (click)="flip()">
+  <div *ngIf="faceUp" class="front">
+    <div class="flex-header">
+      <div class="value">
+        {{ faceValue }}
+      </div>
+
+      <div class="suite">
+        <i class="ra ra-{{suite}}" aria-hidden="true"></i>
+      </div>
+    </div>
+
+    <div class="face">
+      <div>
+        {{ faceValue }}
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!faceUp" class="back">
+    Back of Card
+  </div>
+</div>
