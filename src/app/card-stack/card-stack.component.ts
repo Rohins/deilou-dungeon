@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Card } from '../card/card';
 
 @Component({
   selector: 'app-card-stack',
@@ -11,7 +12,11 @@ export class CardStackComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.cards = [];
+    this.cards = [
+      new Card("K", "hearts"),  
+      new Card("A", "spades"),  
+      new Card("3", "diamonds")  
+    ];
   }
 
 }

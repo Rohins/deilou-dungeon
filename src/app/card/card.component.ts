@@ -4,9 +4,13 @@ import { Card } from './card';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+  styleUrls: ['./card.component.css'],
+  inputs: ['face', 'suite']
 })
 export class CardComponent implements OnInit {
+  public face:  string;
+  public suite: string;
+
   /**
    * The card data (suite, face)
    **/
@@ -27,9 +31,7 @@ export class CardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.complete = false;
-
-    this.card = new Card("K", "clovers");
+    this.card = new Card(this.face, this.suite);
   }
 
   /**
@@ -67,7 +69,16 @@ export class CardComponent implements OnInit {
   computeMechanics() {
     switch(this.card.suite) {
       case "clovers":
+      case "spades":
         console.log(`Take ${this.getValue()} damage!`);
+        this.complete = true;
+        break;
+      case "hearts":
+        console.log(`Recover ${this.getValue()} health!`);
+        this.complete = true;
+        break;
+      case "diamonds":
+        console.log(`Equip a shield worth ${this.getValue()}!`);
         this.complete = true;
         break;
     }

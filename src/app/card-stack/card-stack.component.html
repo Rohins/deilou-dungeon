@@ -1,3 +1,13 @@
 <p>
-  card-stack works!
+Card Stack
 </p>
+
+<app-card face="K" suite="spades"></app-card>
+
+<div>
+  <div *ngFor="let card of cards; let z_index = index" class="stack" [style.z-index]="z_index">
+    <app-card [face]="card.face" [suite]="card.suite"></app-card>
+  </div>
+</div>
+
+

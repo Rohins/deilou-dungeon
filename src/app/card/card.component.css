@@ -3,6 +3,8 @@
     height: 92px;
     border: 1px black solid;
     padding: 0.25em;
+
+    user-select: none;
 }
 
 .face {
@@ -13,8 +15,12 @@
     height: 64px;
 }
 
-.clovers .spades {
+.clovers .front, .spades .front {
     color: black;
+}
+
+.hearts .front, .diamonds .front {
+    color: red;
 }
 
 .flex-header {
@@ -26,4 +32,8 @@
 .back {
     height: 100%;
     background-color: #ddd;
+}
+.front {
+    height: 100%;
+    background-color: white;
 }
