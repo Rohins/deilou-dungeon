@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { CardComponent } from './card/card.component';
 import { RoomComponent } from './room/room.component';
 import { HeroComponent } from './hero/hero.component';
+import { CardStackComponent } from './card-stack/card-stack.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
     RoomComponent,
-    HeroComponent
+    HeroComponent,
+    CardStackComponent
   ],
   imports: [
     BrowserModule,

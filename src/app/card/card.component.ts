@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Card } from './card';
 
 @Component({
   selector: 'app-card',
@@ -7,33 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
   /**
-   * State representing the card is complete. When true
-   * the card will be removed.
+   * The card data (suite, face)
    **/
-  public complete: boolean;
-
-  /**
-   * The face value of the card. Legal values 1-9,J,Q,K,A
-   **/
-  public faceValue: string;
-
+  public card: Card;
+  
   /**
    * State representing if the card is facing up.
    **/
-  public faceUp: boolean;
+  faceUp = false;
 
   /**
-   * The suite of the card: clovers, hearts, diamonds, spades.
+   * State representing the card is complete. When true
+   * the card will be removed.
    **/
-  public suite: string;
+  complete = false;
+
 
   constructor() { }
 
   ngOnInit() {
-    this.faceValue = "K";
-    this.faceUp = false;
-    this.suite = "clovers";
     this.complete = false;
+
+    this.card = new Card("K", "clovers");
   }
 
   /**
@@ -41,7 +37,7 @@ export class CardComponent implements OnInit {
    * the card's face value.
    **/
   getValue() {
-    return 10;
+    return this.card.value();
   }
 
   /**
@@ -69,7 +65,7 @@ export class CardComponent implements OnInit {
    * and face value.
    **/
   computeMechanics() {
-    switch(this.suite) {
+    switch(this.card.suite) {
       case "clovers":
         console.log(`Take ${this.getValue()} damage!`);
         this.complete = true;

@@ -1,18 +1,18 @@
-<div *ngIf="!complete" class="card {{suite}}" (click)="resolve()">
+<div *ngIf="!complete" class="card {{card.suite}}" (click)="resolve()">
   <div *ngIf="faceUp" class="front">
     <div class="flex-header">
       <div class="value">
-        {{ faceValue }}
+        {{ card.face }}
       </div>
 
       <div class="suite">
-        <i class="ra ra-{{suite}}" aria-hidden="true"></i>
+        <i class="ra ra-{{card.suite}}" aria-hidden="true"></i>
       </div>
     </div>
 
     <div class="face">
       <div>
-        {{ faceValue }}
+        {{ card.face }}
       </div>
     </div>
   </div>
