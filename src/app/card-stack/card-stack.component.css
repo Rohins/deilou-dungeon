@@ -1,5 +1,13 @@
-.stack {
+.card {
     position: absolute;
-    left: 0px;
-    right:0px;
+    left: 32px;
+    top:  46px;
 }
+
+.stack {
+    width: 128px;
+    height: 184px;
+    border: 1px solid black;
+    position: relative;
+}
+

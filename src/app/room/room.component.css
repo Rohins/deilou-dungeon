@@ -1,0 +1,13 @@
+.flex-row {
+    display: flex;
+}
+
+.flex-column {
+    padding: .25em;
+}
+
+
+.stack-no-cards {
+    border-style:none;
+    width: 130px;
+}
