@@ -1,4 +1,4 @@
-<div class="card {{suite}}" (click)="flip()">
+<div *ngIf="!complete" class="card {{suite}}" (click)="resolve()">
   <div *ngIf="faceUp" class="front">
     <div class="flex-header">
       <div class="value">
