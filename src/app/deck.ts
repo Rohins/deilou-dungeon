@@ -51,4 +51,8 @@ export class Deck {
       this.cards[j] = temp
     }
   }
+
+  deal(amount) {
+    return this.cards.splice(0, amount);
+  }
 }

@@ -1,0 +1,23 @@
+.hero {
+    display: flex;
+
+    justify-content: center;
+    align-items:     center;
+    text-align:      center;
+
+    border-radius: 50px;
+    border: solid #55c 1px;
+
+    width: 32px;
+    height:32px;
+
+    color: #55c;
+
+    background-color: white;
+}
+
+.flex-item {
+    width: 32px;
+    height: 32px;
+}
+
