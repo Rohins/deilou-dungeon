@@ -29,7 +29,7 @@ export class AppComponent {
     this.health -= value;
     console.log(`You take ${value} damage!`);
 
-    if (this.health < 0) {
+    if (this.health <= 0) {
       this.health = 0;
       console.log(`You are dead!`);
     }
