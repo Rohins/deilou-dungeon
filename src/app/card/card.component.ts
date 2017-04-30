@@ -6,8 +6,7 @@ import { CardResolveService } from '../card-resolve.service';
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css'],
-  inputs: ['face', 'suite'],
-  providers: [CardResolveService]
+  inputs: ['face', 'suite']
 })
 export class CardComponent implements OnInit {
   public face:  string;

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Deck } from '../deck';
 import { Card } from '../card/card';
+import { CardResolveService } from '../card-resolve.service';
 
 @Component({
   selector: 'app-room',
@@ -17,7 +18,7 @@ export class RoomComponent implements OnInit {
   public bottom: Array<Card>;
   public floor:  Number;
 
-  constructor() { }
+  constructor(private _cardResolveService: CardResolveService) { }
 
   ngOnInit() {
     this.deck = new Deck;

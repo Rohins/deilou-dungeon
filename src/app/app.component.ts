@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Card } from './card/card';
 import { CardResolveService } from './card-resolve.service';
 
@@ -16,11 +16,14 @@ export class AppComponent {
 
   shield    = 0;
 
-  constructor(private _cardResolveService: CardResolveService) {
-    _cardResolveService.cardResolved$.subscribe(
+  constructor(private _cardResolveService: CardResolveService) { }
+
+  ngOnInit() {
+    this._cardResolveService.cardResolved$.subscribe(
       card => {
         this.resolveCard(card);
       });
+
   }
 
   damage(value: number) {
@@ -73,5 +76,9 @@ export class AppComponent {
         this.equipShield(card.value());
         break;
     }
+  }
+
+  testResolveService() {
+    this._cardResolveService.resolveCard( new Card("K", "spades"));
   }
 }

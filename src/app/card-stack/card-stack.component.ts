@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Card } from '../card/card';
+import { CardResolveService } from '../card-resolve.service';
 
 @Component({
   selector: 'app-card-stack',
@@ -10,7 +11,7 @@ import { Card } from '../card/card';
 export class CardStackComponent implements OnInit {
   public cards: Array<Card>;
 
-  constructor() { }
+  constructor(private _cardResolveService: CardResolveService) { }
 
   ngOnInit() {
     this.shuffle();

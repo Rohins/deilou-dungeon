@@ -9,6 +9,7 @@ export class CardResolveService {
   cardResolved$ = this.cardResolvedSource.asObservable();
 
   resolveCard(card: Card) {
+    console.log("Card has been resolved");
     this.cardResolvedSource.next(card);
   }
 }
