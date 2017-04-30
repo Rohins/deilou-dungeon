@@ -1,18 +1,17 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Card } from './card';
+import { CardResolveService } from '../card-resolve.service';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css'],
   inputs: ['face', 'suite'],
-  outputs: [`resolveEvent`]
+  providers: [CardResolveService]
 })
 export class CardComponent implements OnInit {
   public face:  string;
   public suite: string;
-
-  public resolveEvent = new EventEmitter<Card>();
 
   /**
    * The card data (suite, face)
@@ -31,7 +30,7 @@ export class CardComponent implements OnInit {
   complete = false;
 
 
-  constructor() { }
+  constructor(private _cardResolveService: CardResolveService) { }
 
   ngOnInit() {
     this.card = new Card(this.face, this.suite);
@@ -70,7 +69,7 @@ export class CardComponent implements OnInit {
    * and face value.
    **/
   computeMechanics() {
-    this.resolveEvent.emit(this.card);
+    this._cardResolveService.resolveCard(this.card);
     this.complete = true;
   }
 

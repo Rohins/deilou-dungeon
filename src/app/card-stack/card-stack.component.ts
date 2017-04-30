@@ -1,16 +1,14 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Card } from '../card/card';
 
 @Component({
   selector: 'app-card-stack',
   templateUrl: './card-stack.component.html',
   styleUrls: ['./card-stack.component.css'],
-  inputs: ['cards'],
-  outputs: [`resolveEvent`]
+  inputs: ['cards']
 })
 export class CardStackComponent implements OnInit {
   public cards: Array<Card>;
-  public resolveEvent = new EventEmitter<Card>();
 
   constructor() { }
 
@@ -33,9 +31,5 @@ export class CardStackComponent implements OnInit {
   
   log(value: number) {
     console.log(value);
-  }
-
-  pushEvent(card: Card) {
-    this.resolveEvent.emit(card);
   }
 }

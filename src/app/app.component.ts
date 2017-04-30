@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { Card } from './card/card';
+import { CardResolveService } from './card-resolve.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [CardResolveService]
 })
 export class AppComponent {
   title = 'Deilou Dungeon';
@@ -13,6 +15,13 @@ export class AppComponent {
   health    = 10;
 
   shield    = 0;
+
+  constructor(private _cardResolveService: CardResolveService) {
+    _cardResolveService.cardResolved$.subscribe(
+      card => {
+        this.resolveCard(card);
+      });
+  }
 
   damage(value: number) {
     if (this.shield > value) {
