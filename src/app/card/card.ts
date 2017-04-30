@@ -9,7 +9,14 @@ export class Card {
    **/
   public suite: string;
 
+  /**
+   * State for determining if the card is fully resolved.
+   **/
   public complete = false;
+
+  /**
+   * State for determining if the card is face up.
+   **/
   public faceUp   = false;
 
   constructor(face: string, suite: string) { 
@@ -17,6 +24,9 @@ export class Card {
     this.suite = suite; 
   }
 
+  /**
+   * Converts the card's face to a numeric value.
+   **/
   value() {
     let values = {
       "2": 2,
@@ -37,14 +47,17 @@ export class Card {
     return values[this.face];
   }
 
+  /**
+   * Checks if the card is beneficial. Beneficial cards are
+   * hearts and diamonds.
+   **/
   beneficial() {
-    if (this.suite === "hearts" || this.suite === "diamonds") {
-      return true;
-    }
-
-    return false;
+    return this.suite === "hearts" || this.suite === "diamonds";
   }
 
+  /**
+   * Helper function for determining if the card is face down.
+   **/
   faceDown() {
     return !this.faceUp;
   }

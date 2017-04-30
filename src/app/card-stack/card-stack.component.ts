@@ -17,6 +17,9 @@ export class CardStackComponent implements OnInit {
     this.shuffle();
   }
 
+  /**
+   * Shuffles the cards in the stack.
+   **/
   shuffle() {
     let i = 0
       , j = 0
@@ -28,9 +31,5 @@ export class CardStackComponent implements OnInit {
       this.cards[i] = this.cards[j]
       this.cards[j] = temp
     }
-  }
-  
-  log(value: number) {
-    console.log(value);
   }
 }

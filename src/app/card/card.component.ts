@@ -14,14 +14,6 @@ export class CardComponent implements OnInit {
    **/
   public card: Card;
   
-
-  /**
-   * State representing the card is complete. When true
-   * the card will be removed.
-   **/
-  complete = false;
-
-
   constructor(private _cardResolveService: CardResolveService) { }
 
   ngOnInit() {
@@ -35,9 +27,20 @@ export class CardComponent implements OnInit {
     return this.card.value();
   }
 
+  /**
+   * Helper function for determining if the card is face up.
+   **/
   faceUp() {
     return this.card.faceUp;
   } 
+
+  /**
+   * Helper function for determining if the card is fully
+   * resolved.
+   **/
+  complete() {
+    return this.card.complete;
+  }
 
   /**
    * Flip the card!
@@ -65,7 +68,6 @@ export class CardComponent implements OnInit {
    **/
   computeMechanics() {
     this._cardResolveService.resolveCard(this.card);
-    this.complete = true;
     this.card.complete = true;
   }
 

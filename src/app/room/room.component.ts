@@ -12,14 +12,24 @@ import { CardResolveService } from '../card-resolve.service';
 export class RoomComponent implements OnInit {
   public deck:   Deck;
 
+  /**
+   * Card Arrays for holding cards for the rooms.
+   **/
   public top:    Array<Card>;
-
   public right:  Array<Card>;
   public middle: Array<Card>;
   public left:   Array<Card>;
   public bottom: Array<Card>;
 
+  /**
+   * Floor number, used for generating the rooms
+   **/
   public floor;
+
+  /**
+   * Cards left over from the previous floor. They
+   * go to the top room.
+   **/
   public previousCards = new Array<Card>();
 
   constructor(private _cardResolveService: CardResolveService) { }
@@ -34,6 +44,15 @@ export class RoomComponent implements OnInit {
     this.createFloor();
   }
 
+  /**
+   * Takes previous cards and puts them into the
+   * top room. Creates the remaining rooms based 
+   * on the floor number. Floors 1-4 will have 
+   * each of the rooms have cards equal to the
+   * floor number. Floor 5 will have middle and
+   * bottom rooms equal to 6 cards. This is due
+   * to the limitation of using a standard deck
+   **/
   createFloor() {
     this.top    = this.previousCards;
 
@@ -51,14 +70,24 @@ export class RoomComponent implements OnInit {
     this.bottom = this.deck.deal(this.floor);
   }
 
+  /**
+   * Increments the floor number. Collects and
+   * processes the remaining cards. Creates the
+   * floor.
+   **/
   nextFloor() {
     this.floor = `${parseInt(this.floor) + 1}`;
-
     this.collectPreviousCards();
-
     this.createFloor();
   }
 
+  /**
+   * Cards left over when going to the next room
+   * go through a process, then are collected and
+   * placed in the top room. All completed cards
+   * are excluded. All beneficial face up cards
+   * are excluded. The remaining are collected.
+   **/
   collectPreviousCards() {
     this.previousCards = new Array<Card>();
     this.removeCompletedCards();
