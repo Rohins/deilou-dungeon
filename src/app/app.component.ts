@@ -22,29 +22,37 @@ export class AppComponent {
     this._cardResolveService.cardResolved$.subscribe(
       card => {
         this.resolveCard(card);
+        this.checkIfDead();
       });
 
   }
 
   damage(value: number) {
-    if (this.shield > value) {
+    if (this.shield >= value) {
       this.shield -= value;
-      value = 0
       console.log(`You blocked ${value} damage!`);
+      return;
     }
 
-    if (value > this.shield) {
-      value -= this.shield;
-      this.shield = 0;
+    value -= this.shield;
+    if (this.shield > 0) {
+      console.log(`You blocked ${this.shield} damage!`);
     }
+
+    this.shield = 0;
+    console.log(`Your shield broke!`);
 
     this.health -= value;
     console.log(`You take ${value} damage!`);
+  }
 
+  checkIfDead() {
     if (this.health <= 0) {
-      this.health = 0;
-      console.log(`You are dead!`);
+      console.log("You are dead!");
+      return true;
     }
+
+    return false;
   }
 
   equipShield(value: number) {
@@ -76,9 +84,5 @@ export class AppComponent {
         this.equipShield(card.value());
         break;
     }
-  }
-
-  testResolveService() {
-    this._cardResolveService.resolveCard( new Card("K", "spades"));
   }
 }
