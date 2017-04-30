@@ -14,10 +14,6 @@ export class CardComponent implements OnInit {
    **/
   public card: Card;
   
-  /**
-   * State representing if the card is facing up.
-   **/
-  faceUp = false;
 
   /**
    * State representing the card is complete. When true
@@ -39,12 +35,15 @@ export class CardComponent implements OnInit {
     return this.card.value();
   }
 
+  faceUp() {
+    return this.card.faceUp;
+  } 
+
   /**
    * Flip the card!
    **/
   flip() {
-    this.faceUp = this.faceUp ? false : true;
-    this.card.faceUp = this.faceUp;
+    this.card.faceUp = this.card.faceUp ? false : true;
   }
 
   /**
@@ -52,7 +51,7 @@ export class CardComponent implements OnInit {
    * Otherwise, resolve the card's mechanics.
    **/
   resolve() {
-    if (!this.faceUp) {
+    if (!this.faceUp()) {
       this.flip();
       return;
     }

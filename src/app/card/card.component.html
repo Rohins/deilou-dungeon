@@ -1,5 +1,5 @@
 <div *ngIf="!complete" class="card {{card.suite}}" (click)="resolve()">
-  <div *ngIf="faceUp" class="front">
+  <div *ngIf="faceUp()" class="front">
     <div class="flex-header">
       <div class="value">
         {{ card.face }}
@@ -17,7 +17,7 @@
     </div>
   </div>
 
-  <div *ngIf="!faceUp" class="back">
+  <div *ngIf="!faceUp()" class="back">
     Back of Card
   </div>
 </div>
