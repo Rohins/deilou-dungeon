@@ -11,10 +11,12 @@ import { CardResolveService } from './card-resolve.service';
 export class AppComponent {
   title = 'Deilou Dungeon';
 
-  maxHealth = 10;
-  health    = 10;
+  maxHealth = 20;
+  health    = 20; 
+  shield    = 5;
+  score     = 0;
 
-  shield    = 0;
+  log       = new Array<string>();
 
   constructor(private _cardResolveService: CardResolveService) { }
 
@@ -28,27 +30,41 @@ export class AppComponent {
   }
 
   damage(value: number) {
+    if (this.shield == value) {
+      this.logAction("Wow, a perfect block!");
+
+      //Perfect blocks is worth 3x points.
+      //No shield damage.
+      this.score += value*3;
+      return;
+    }
+
     if (this.shield >= value) {
       this.shield -= value;
-      console.log(`You blocked ${value} damage!`);
+      this.logAction(`You blocked ${value} damage!`);
+      
+      //Fully blocked damage is worth 2x points.
+      this.score += value*2;
       return;
     }
 
     value -= this.shield;
     if (this.shield > 0) {
-      console.log(`You blocked ${this.shield} damage!`);
+      this.logAction(`You blocked ${this.shield} damage!`);
+      this.logAction(`Your shield broke!`);
+      //Regular blocked damage is worth 1x points.
+      this.score += value;
     }
 
     this.shield = 0;
-    console.log(`Your shield broke!`);
 
     this.health -= value;
-    console.log(`You take ${value} damage!`);
+    this.logAction(`You take ${value} damage!`);
   }
 
   checkIfDead() {
     if (this.health <= 0) {
-      console.log("You are dead!");
+      this.logAction("You are dead!");
       return true;
     }
 
@@ -57,17 +73,17 @@ export class AppComponent {
 
   equipShield(value: number) {
     this.shield = value;
-    console.log(`Equiped +${value} shield!`);
+    this.logAction(`Equiped +${value} shield!`);
   }
 
   heal(value: number) {
     this.health += value;
 
-    console.log(`Drank +${value} potion!`);
+    this.logAction(`Drank +${value} potion!`);
 
     if (this.health > this.maxHealth) {
       this.health = this.maxHealth;
-      console.log(`Health is maximum!`);
+      this.logAction(`Health is maximum!`);
     }
   }
 
@@ -85,4 +101,17 @@ export class AppComponent {
         break;
     }
   }
+
+  initializeHero() {
+    this.maxHealth = 20;
+    this.health    = 20; 
+    this.shield    = 5;
+    this.score     = 0;
+    this.log       = new Array<string>();
+  }
+
+  logAction(value: string) {
+    this.log.unshift(value);
+  }
+
 }

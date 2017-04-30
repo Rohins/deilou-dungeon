@@ -2,7 +2,22 @@
   {{title}}
 </h1>
 
-<app-room floor=1 ></app-room>
-<app-hero></app-hero>
-<div>Health: {{health}} / {{maxHealth}}</div>
-<div>Shield: {{shield}}</div>
+<div *ngIf="health>0">
+  <app-room floor=1 ></app-room>
+  <app-hero></app-hero>
+  <div>Health: {{health}} / {{maxHealth}}</div>
+  <div>Shield: {{shield}}</div>
+  <div>Score: {{score}}</div>
+  Log
+  <div class="log">
+    <p *ngFor="let item of log">
+      {{ item }}
+    </p>
+  </div>
+</div>
+
+<div *ngIf="health<=0">
+  Game Over! <br/>
+  Your score was: {{ score }} <br/>
+  <button (click)="initializeHero()">Try again?</button>
+</div>

@@ -1,0 +1,10 @@
+.log {
+    overflow-y: scroll;
+    height: 64px;
+    border: 1px solid black;
+}
+
+.log p {
+    padding: 0px;
+    margin: 0px;
+}
