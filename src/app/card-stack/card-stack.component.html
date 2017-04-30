@@ -1,5 +1,5 @@
 <div class="stack">
   <div *ngFor="let card of cards; let z_index = index" class="card" [style.z-index]="z_index">
-    <app-card [face]="card.face" [suite]="card.suite"></app-card>
+    <app-card [face]="card.face" [suite]="card.suite" (resolveEvent)="pushEvent($event)"></app-card>
   </div>
 </div>

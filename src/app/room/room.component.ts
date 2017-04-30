@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Deck } from '../deck';
 import { Card } from '../card/card';
 
@@ -6,7 +6,8 @@ import { Card } from '../card/card';
   selector: 'app-room',
   templateUrl: './room.component.html',
   styleUrls: ['./room.component.css'],
-  inputs: ['floor']
+  inputs: ['floor'],
+  outputs: [`resolveEvent`]
 })
 export class RoomComponent implements OnInit {
   public deck:   Deck;
@@ -16,6 +17,8 @@ export class RoomComponent implements OnInit {
   public left:   Array<Card>;
   public bottom: Array<Card>;
   public floor:  Number;
+
+  public resolveEvent = new EventEmitter<Card>();
 
   constructor() { }
 
@@ -27,6 +30,10 @@ export class RoomComponent implements OnInit {
     this.left   = this.deck.deal(this.floor);
     this.middle = this.deck.deal(this.floor);
     this.bottom = this.deck.deal(this.floor);
+  }
+
+  pushEvent(card: Card) {
+    this.resolveEvent.emit(card);
   }
 
 }

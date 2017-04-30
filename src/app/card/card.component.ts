@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Card } from './card';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css'],
-  inputs: ['face', 'suite']
+  inputs: ['face', 'suite'],
+  outputs: [`resolveEvent`]
 })
 export class CardComponent implements OnInit {
   public face:  string;
   public suite: string;
+
+  public resolveEvent = new EventEmitter<Card>();
 
   /**
    * The card data (suite, face)
@@ -67,21 +70,8 @@ export class CardComponent implements OnInit {
    * and face value.
    **/
   computeMechanics() {
-    switch(this.card.suite) {
-      case "clovers":
-      case "spades":
-        console.log(`Take ${this.getValue()} damage!`);
-        this.complete = true;
-        break;
-      case "hearts":
-        console.log(`Recover ${this.getValue()} health!`);
-        this.complete = true;
-        break;
-      case "diamonds":
-        console.log(`Equip a shield worth ${this.getValue()}!`);
-        this.complete = true;
-        break;
-    }
+    this.resolveEvent.emit(this.card);
+    this.complete = true;
   }
 
 }
