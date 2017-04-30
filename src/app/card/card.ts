@@ -9,6 +9,9 @@ export class Card {
    **/
   public suite: string;
 
+  public complete = false;
+  public faceUp   = false;
+
   constructor(face: string, suite: string) { 
     this.face = face; 
     this.suite = suite; 
@@ -24,13 +27,26 @@ export class Card {
       "7": 7,
       "8": 8,
       "9": 9,
+      "10": 10,
       "J": 10,
       "Q": 10,
       "K": 10,
-      "A": 11,
+      "A": 11
     }
 
     return values[this.face];
+  }
+
+  beneficial() {
+    if (this.suite === "hearts" || this.suite === "diamonds") {
+      return true;
+    }
+
+    return false;
+  }
+
+  faceDown() {
+    return !this.faceUp;
   }
 
 }

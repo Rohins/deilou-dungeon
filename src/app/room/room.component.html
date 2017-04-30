@@ -1,9 +1,17 @@
+<div>
+  Floor: {{floor}}
+  <button (click)="nextFloor()">Next Floor</button>
+</div>
+<div>
+  Cards Remaining: {{deck.cards.length}}
+</div>
+
 <div class="flex-row">
   <div class="flex-column">
     <div class="stack-no-cards"></div>
   </div>
   <div class="flex-column">
-    <app-card-stack [cards]="top" (resolveEvent)="pushEvent($event)"></app-card-stack>
+    <app-card-stack *ngIf="previousCards.length > 0" [cards]="top"></app-card-stack>
   </div>
   <div class="flex-column">
     <div class="stack-no-cards"></div>
@@ -11,13 +19,13 @@
 </div>
 <div class="flex-row">
   <div class="flex-column">
-    <app-card-stack [cards]="left" (resolveEvent)="pushEvent($event)"></app-card-stack>
+    <app-card-stack [cards]="left"></app-card-stack>
   </div>
   <div class="flex-column">
-    <app-card-stack [cards]="middle" (resolveEvent)="pushEvent($event)"></app-card-stack>
+    <app-card-stack [cards]="middle"></app-card-stack>
   </div>
   <div class="flex-column">
-    <app-card-stack [cards]="right" (resolveEvent)="pushEvent($event)"></app-card-stack>
+    <app-card-stack [cards]="right"></app-card-stack>
   </div>
 </div>
 <div class="flex-row">
@@ -25,7 +33,7 @@
     <div class="stack-no-cards"></div>
   </div>
   <div class="flex-column">
-    <app-card-stack [cards]="bottom" (resolveEvent)="pushEvent($event)"></app-card-stack>
+    <app-card-stack [cards]="bottom"></app-card-stack>
   </div>
   <div class="flex-column">
     <div class="stack-no-cards"></div>

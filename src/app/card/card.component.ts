@@ -6,12 +6,9 @@ import { CardResolveService } from '../card-resolve.service';
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css'],
-  inputs: ['face', 'suite']
+  inputs: ['card']
 })
 export class CardComponent implements OnInit {
-  public face:  string;
-  public suite: string;
-
   /**
    * The card data (suite, face)
    **/
@@ -32,7 +29,6 @@ export class CardComponent implements OnInit {
   constructor(private _cardResolveService: CardResolveService) { }
 
   ngOnInit() {
-    this.card = new Card(this.face, this.suite);
   }
 
   /**
@@ -48,6 +44,7 @@ export class CardComponent implements OnInit {
    **/
   flip() {
     this.faceUp = this.faceUp ? false : true;
+    this.card.faceUp = this.faceUp;
   }
 
   /**
@@ -70,6 +67,7 @@ export class CardComponent implements OnInit {
   computeMechanics() {
     this._cardResolveService.resolveCard(this.card);
     this.complete = true;
+    this.card.complete = true;
   }
 
 }
