@@ -1,4 +1,25 @@
 # DeilouDungeon
+Deilou Dungeon is a card-based roguelike that can be played with a standard deck of cards. Most of the mechanics are inspired by [Donsol](http://wiki.xxiivv.com/Donsol).
+
+## Mechanics
+Potions (Hearts) will heal you but you can't heal more than your max HP.
+Shields (Diamonds) will equip a shield for face value, replacing any shield you currently have.
+Monsters (Spades and Clubs) will damage you for face value.
+
+All face cards are worth 10 and aces are worth 11.
+
+## Traveling the Dungeon
+At any time, you may go to the next floor. Any face down cards will be carried over to the next floor. Any face up monsters will go the next floor. Any face up potions or shields will be left behind. The carried over cards go to the top slot.
+
+## Scoring
+To score you have to block damage. 
+Blocked damage but your shield breaks: 1 x blocked damage goes to score.
+Blocked damage but your shield doesn't break: 2 x blocked damage goes to score.
+Shield is equal to damage (perfect block): 3 x blocked damage, shield takes no damage.
+
+(Not Implemented) If you complete all the cards on a floor you will get floor# * 10 points.
+
+## Credits
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
@@ -17,11 +38,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
 
 ## Further help
 
