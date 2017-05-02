@@ -1,9 +1,12 @@
 <div>
-  Floor: {{floor}}
-  <button *ngIf="floor<5"(click)="nextFloor()">Next Floor</button>
+  <h3>
+    Floor: {{floor}}, {{cardsLeft()}} cards left.
+    <button *ngIf="floor<5"(click)="nextFloor()">Next Floor</button>
+  </h3>
+  <hr />
 </div>
 
-<div class="flex-row">
+<div *ngIf="floor<=5" class="flex-row">
   <div class="flex-column">
     <div class="stack-no-cards"></div>
   </div>
@@ -37,4 +40,8 @@
   <div class="flex-column">
     <div class="stack-no-cards"></div>
   </div>
+</div>
+
+<div *ngIf="floor>5">
+  You escaped the dungeon!!!
 </div>

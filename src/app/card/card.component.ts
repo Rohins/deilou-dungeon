@@ -67,8 +67,8 @@ export class CardComponent implements OnInit {
    * and face value.
    **/
   computeMechanics() {
-    this._cardResolveService.resolveCard(this.card);
     this.card.complete = true;
+    this._cardResolveService.resolveCard(this.card);
   }
 
 }

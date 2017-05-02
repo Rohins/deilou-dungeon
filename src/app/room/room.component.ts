@@ -37,6 +37,16 @@ export class RoomComponent implements OnInit {
   ngOnInit() {
     this.deck = new Deck;
     this.createFloor();
+
+    this._cardResolveService.cardResolved$.subscribe(
+      card => {
+        console.log('Resolved from room');
+
+        console.log(this.cardsLeft());
+        if (this.cardsLeft() == 0) {
+          this.nextFloor();
+        }
+      });
   }
 
   newFloor(floor: number) {
@@ -93,6 +103,29 @@ export class RoomComponent implements OnInit {
     this.removeCompletedCards();
     this.removeFaceUpBeneficialCards();
     this.mergeRemainingCards();
+  }
+
+  cardsLeft() {
+    let cardsLeft = 0;
+    cardsLeft += this.cardsLeftInStack(this.top);
+    cardsLeft += this.cardsLeftInStack(this.middle);
+    cardsLeft += this.cardsLeftInStack(this.bottom);
+    cardsLeft += this.cardsLeftInStack(this.left);
+    cardsLeft += this.cardsLeftInStack(this.right);
+
+    return cardsLeft;
+  }
+
+  cardsLeftInStack(stack) {
+    let cardsLeft = 0;
+    stack.forEach(
+      card => {
+        if (!card.complete) {
+          cardsLeft += 1;
+        }
+      });
+
+    return cardsLeft;
   }
 
   filterComplete(cards: Array<Card>) {
