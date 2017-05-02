@@ -3,16 +3,23 @@
 </h1>
 
 <div *ngIf="health>0">
-  <app-room floor=1 ></app-room>
-  <app-hero></app-hero>
-  <div>Health: {{health}} / {{maxHealth}}</div>
-  <div>Shield: {{shield}}</div>
-  <div>Score: {{score}}</div>
-  Log
-  <div class="log">
-    <p *ngFor="let item of log">
-      {{ item }}
-    </p>
+  <div class="flex-row">
+    <div>
+      <app-room floor=1 ></app-room>
+    </div>
+    <div>
+      <h3>Hero Stats</h3>
+      <hr/>
+      <div>Health: {{health}} / {{maxHealth}}</div>
+      <div>Shield: {{shield}}</div>
+      <div>Score: {{score}}</div>
+      Log
+      <div class="log">
+        <p *ngFor="let item of log">
+          {{ item }}
+        </p>
+      </div>
+    </div>
   </div>
 </div>
 
