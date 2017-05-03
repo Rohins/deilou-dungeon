@@ -45,6 +45,7 @@ export class AppComponent {
       this.shield -= value;
       this.logAction(`You blocked ${value} damage!`);
       this.playShieldSound();
+      this.animateShield();
       
       //Fully blocked damage is worth 2x points.
       this.score += value*2;
@@ -64,6 +65,7 @@ export class AppComponent {
     this.health -= value;
     this.logAction(`You take ${value} damage!`);
     this.playDamageSound();
+    this.animateDamage();
   }
 
   checkIfDead() {
@@ -78,6 +80,7 @@ export class AppComponent {
   equipShield(value: number) {
     this.shield = value;
     this.playShieldSound();
+    this.animateShield();
     this.logAction(`Equiped +${value} shield!`);
   }
 
@@ -144,6 +147,26 @@ export class AppComponent {
   playMusic() {
     let audio = <HTMLAudioElement>document.getElementById('music');
     audio.play();
+  }
+
+  animateDamage() {
+    let health = document.getElementById('health');
+    health.classList.remove("damage_animation");
+    health.classList.add("damage_animation");
+
+    setTimeout( ()=> {
+      health.classList.remove("damage_animation");
+    }, 2000);
+  }
+
+  animateShield() {
+    let shield = document.getElementById('shield');
+    shield.classList.remove("shield_animation");
+    shield.classList.add("shield_animation");
+
+    setTimeout( ()=> {
+      shield.classList.remove("shield_animation");
+    }, 2000);
   }
 
   

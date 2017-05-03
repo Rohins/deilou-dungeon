@@ -2,6 +2,26 @@ body {
     background-color:black;
     color:white;
 }
+
+
+@keyframes damage {
+    0%, 100% {
+        background-color:black;
+    }
+    50% {
+        background-color:red;
+    }
+}
+
+@keyframes shield {
+    0%, 100% {
+        background-color:black;
+    }
+    50% {
+        background-color:yellow;
+    }
+}
+
 .log {
     overflow-y: scroll;
     height: 64px;
@@ -26,4 +46,12 @@ body {
 .flex-center {
     display: flex;
     justify-content: center;
+}
+
+.damage_animation {
+    animation: damage 0.25s;
+}
+
+.shield_animation {
+    animation: shield 0.25s;
 }

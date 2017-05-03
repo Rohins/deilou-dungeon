@@ -104,6 +104,7 @@ export class RoomComponent implements OnInit {
     this.removeCompletedCards();
     this.removeFaceUpBeneficialCards();
     this.mergeRemainingCards();
+    this.flipRemainingCardsFaceDown();
   }
 
   cardsLeft() {
@@ -165,6 +166,14 @@ export class RoomComponent implements OnInit {
     this.previousCards = this.previousCards.concat(this.left);
     this.previousCards = this.previousCards.concat(this.middle);
     this.previousCards = this.previousCards.concat(this.bottom);
+  }
+
+  flipRemainingCardsFaceDown() {
+    this.previousCards = this.previousCards.map(
+      card => {
+        card.faceUp = false;
+        return card;
+      });
   }
 
   playStairsSound() {
