@@ -26,12 +26,14 @@ export class AppComponent {
         this.resolveCard(card);
         this.checkIfDead();
       });
+    this.playMusic();
 
   }
 
   damage(value: number) {
     if (this.shield == value) {
       this.logAction("Wow, a perfect block!");
+      this.playPerfectBlockSound();
 
       //Perfect blocks is worth 3x points.
       //No shield damage.
@@ -42,6 +44,7 @@ export class AppComponent {
     if (this.shield >= value) {
       this.shield -= value;
       this.logAction(`You blocked ${value} damage!`);
+      this.playShieldSound();
       
       //Fully blocked damage is worth 2x points.
       this.score += value*2;
@@ -60,6 +63,7 @@ export class AppComponent {
 
     this.health -= value;
     this.logAction(`You take ${value} damage!`);
+    this.playDamageSound();
   }
 
   checkIfDead() {
@@ -73,6 +77,7 @@ export class AppComponent {
 
   equipShield(value: number) {
     this.shield = value;
+    this.playShieldSound();
     this.logAction(`Equiped +${value} shield!`);
   }
 
@@ -80,6 +85,8 @@ export class AppComponent {
     this.health += value;
 
     this.logAction(`Drank +${value} potion!`);
+
+    this.playPotionSound();
 
     if (this.health > this.maxHealth) {
       this.health = this.maxHealth;
@@ -113,5 +120,32 @@ export class AppComponent {
   logAction(value: string) {
     this.log.unshift(value);
   }
+
+  playPotionSound() {
+    let audio = <HTMLAudioElement>document.getElementById('potion_sound');
+    audio.play();
+  }
+
+  playShieldSound() {
+    let audio = <HTMLAudioElement>document.getElementById('shield_sound');
+    audio.play();
+  }
+
+  playPerfectBlockSound() {
+    let audio = <HTMLAudioElement>document.getElementById('perfect_block_sound');
+    audio.play();
+  }
+
+  playDamageSound() {
+    let audio = <HTMLAudioElement>document.getElementById('damage_sound');
+    audio.play();
+  }
+
+  playMusic() {
+    let audio = <HTMLAudioElement>document.getElementById('music');
+    audio.play();
+  }
+
+  
 
 }

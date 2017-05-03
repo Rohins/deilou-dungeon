@@ -47,6 +47,7 @@ export class CardComponent implements OnInit {
    **/
   flip() {
     this.card.faceUp = this.card.faceUp ? false : true;
+    this.playSound();
   }
 
   /**
@@ -69,6 +70,11 @@ export class CardComponent implements OnInit {
   computeMechanics() {
     this.card.complete = true;
     this._cardResolveService.resolveCard(this.card);
+  }
+
+  playSound() {
+    let audio = <HTMLAudioElement>document.getElementById('flip_sound');
+    audio.play();
   }
 
 }

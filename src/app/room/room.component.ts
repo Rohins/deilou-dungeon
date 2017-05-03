@@ -86,6 +86,7 @@ export class RoomComponent implements OnInit {
    * floor.
    **/
   nextFloor() {
+    this.playStairsSound();
     this.floor = `${parseInt(this.floor) + 1}`;
     this.collectPreviousCards();
     this.createFloor();
@@ -164,6 +165,11 @@ export class RoomComponent implements OnInit {
     this.previousCards = this.previousCards.concat(this.left);
     this.previousCards = this.previousCards.concat(this.middle);
     this.previousCards = this.previousCards.concat(this.bottom);
+  }
+
+  playStairsSound() {
+    let audio = <HTMLAudioElement>document.getElementById('stairs_sound');
+    audio.play();
   }
 
 }
