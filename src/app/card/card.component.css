@@ -1,9 +1,12 @@
 .card {
-    width: 64px;
-    height: 92px;
+    width: 80px;
+    height: 115px;
     border: 1px black solid;
     user-select: none;
+
+    border-radius: 4px;
 }
+
 
 .face {
     font-size: 1.5em;
@@ -14,24 +17,32 @@
 }
 
 .clovers .front, .spades .front {
-    color: black;
+    color: gray;
 }
 
-.hearts .front, .diamonds .front {
+.hearts .front {
     color: red;
+}
+
+.diamonds .front {
+    color: yellow;
 }
 
 .flex-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 2px;
 }
 
 .back {
     height: 100%;
-    background-color: #ddd;
+    border: 2px solid white;
+    border-radius: 4px;
 }
 .front {
     height: 100%;
-    background-color: white;
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 4px;
 }

@@ -9,7 +9,7 @@ import { CardResolveService } from './card-resolve.service';
   providers: [CardResolveService]
 })
 export class AppComponent {
-  title = 'Deilou Dungeon';
+  title = 'DEILOU DUNGEON';
 
   maxHealth = 20;
   health    = 20; 

@@ -11,3 +11,21 @@
     border-style:none;
     width: 130px;
 }
+
+button {
+    font-family: courier;
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    padding: 4px;
+}
+
+.floor {
+}
+
+@media screen and (max-height: 900px) {
+    .floor {
+        overflow-y: scroll;
+        height: 400px;
+    }
+}

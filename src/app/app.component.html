@@ -1,30 +1,34 @@
-<h1>
-  {{title}}
-</h1>
+<div class="flex-center">
+  <h1>
+    -={{title}}=-
+  </h1>
+</div>
 
-<div *ngIf="health>0">
-  <div class="flex-row">
-    <div>
-      <app-room floor=1 ></app-room>
-    </div>
-    <div>
-      <h3>Hero Stats</h3>
-      <hr/>
-      <div>Health: {{health}} / {{maxHealth}}</div>
-      <div>Shield: {{shield}}</div>
-      <div>Score: {{score}}</div>
-      Log
-      <div class="log">
-        <p *ngFor="let item of log">
-          {{ item }}
-        </p>
+<div class="flex-center">
+  <div *ngIf="health>0">
+    <div class="flex-row">
+      <div>
+        <app-room floor=1 ></app-room>
+      </div>
+      <div>
+        <h3>Hero Stats</h3>
+        <hr/>
+        <div>Health: {{health}} / {{maxHealth}}</div>
+        <div>Shield: <span style="color:yellow">{{shield}}</span></div>
+        <div>Score: {{score}}</div>
+        Log
+        <div class="log">
+          <p *ngFor="let item of log">
+            {{ item }}
+          </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div *ngIf="health<=0">
-  Game Over! <br/>
-  Your score was: {{ score }} <br/>
-  <button (click)="initializeHero()">Try again?</button>
+  <div *ngIf="health<=0">
+    Game Over! <br/>
+    Your score was: {{ score }} <br/>
+    <button (click)="initializeHero()">Try again?</button>
+  </div>
 </div>

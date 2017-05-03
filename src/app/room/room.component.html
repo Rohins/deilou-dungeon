@@ -1,49 +1,53 @@
-<div *ngIf="floor<=5" >
-  <h3>
-    Floor: {{floor}}, {{cardsLeft()}} cards left.
-    <button *ngIf="floor<5"(click)="nextFloor()">Next Floor</button>
-  </h3>
-  <hr />
-</div>
+<div>
+  <div *ngIf="floor<=5" >
+    <h3>
+      Floor: {{floor}}, {{cardsLeft()}} cards left.
+      <button *ngIf="floor<5"(click)="nextFloor()">Next Floor</button>
+    </h3>
+    <hr />
+  </div>
 
-<div *ngIf="floor<=5">
-  <div class="flex-row">
-    <div class="flex-column">
-      <div class="stack-no-cards"></div>
-    </div>
-    <div class="flex-column">
-      <app-card-stack *ngIf="previousCards.length > 0" [cards]="top"></app-card-stack>
-    </div>
-    <div class="flex-column">
-      <div class="stack-no-cards"></div>
+  <div class="floor">
+    <div *ngIf="floor<=5">
+      <div class="flex-row">
+        <div class="flex-column">
+          <div class="stack-no-cards"></div>
+        </div>
+        <div class="flex-column">
+          <app-card-stack *ngIf="previousCards.length > 0" [cards]="top"></app-card-stack>
+        </div>
+        <div class="flex-column">
+          <div class="stack-no-cards"></div>
+        </div>
+      </div>
+      <div class="flex-row">
+        <div class="flex-column">
+          <div *ngIf="floor==5" class="stack-no-cards"></div>
+          <app-card-stack *ngIf="floor<5" [cards]="left"></app-card-stack>
+        </div>
+        <div class="flex-column">
+          <app-card-stack [cards]="middle"></app-card-stack>
+        </div>
+        <div class="flex-column">
+          <div *ngIf="floor==5" class="stack-no-cards"></div>
+          <app-card-stack *ngIf="floor<5"[cards]="right"></app-card-stack>
+        </div>
+      </div>
+      <div class="flex-row">
+        <div class="flex-column">
+          <div class="stack-no-cards"></div>
+        </div>
+        <div class="flex-column">
+          <app-card-stack [cards]="bottom"></app-card-stack>
+        </div>
+        <div class="flex-column">
+          <div class="stack-no-cards"></div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="flex-row">
-    <div class="flex-column">
-      <div *ngIf="floor==5" class="stack-no-cards"></div>
-      <app-card-stack *ngIf="floor<5" [cards]="left"></app-card-stack>
-    </div>
-    <div class="flex-column">
-      <app-card-stack [cards]="middle"></app-card-stack>
-    </div>
-    <div class="flex-column">
-      <div *ngIf="floor==5" class="stack-no-cards"></div>
-      <app-card-stack *ngIf="floor<5"[cards]="right"></app-card-stack>
-    </div>
-  </div>
-  <div class="flex-row">
-    <div class="flex-column">
-      <div class="stack-no-cards"></div>
-    </div>
-    <div class="flex-column">
-      <app-card-stack [cards]="bottom"></app-card-stack>
-    </div>
-    <div class="flex-column">
-      <div class="stack-no-cards"></div>
-    </div>
-  </div>
-</div>
 
-<div *ngIf="floor>5">
-  You escaped the dungeon!!!
+  <div *ngIf="floor>5">
+    You escaped the dungeon!!!
+  </div>
 </div>

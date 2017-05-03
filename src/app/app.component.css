@@ -1,7 +1,11 @@
+body {
+    background-color:black;
+    color:white;
+}
 .log {
     overflow-y: scroll;
     height: 64px;
-    border: 1px solid black;
+    border: 1px solid white;
 
     width: 256px;
 }
@@ -17,4 +21,9 @@
 
 .flex-row div {
     margin-right: 1em;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
 }
