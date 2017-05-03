@@ -22,6 +22,16 @@ body {
     }
 }
 
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+
+}
+
 .log {
     overflow-y: scroll;
     height: 64px;
@@ -54,4 +64,8 @@ body {
 
 .shield_animation {
     animation: shield 0.25s;
+}
+
+.fade_in_animation {
+    animation: fade-in 1s;
 }

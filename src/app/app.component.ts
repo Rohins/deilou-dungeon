@@ -27,6 +27,7 @@ export class AppComponent {
         this.checkIfDead();
       });
     this.playMusic();
+    this.animateFadeIn();
 
   }
 
@@ -156,7 +157,7 @@ export class AppComponent {
 
     setTimeout( ()=> {
       health.classList.remove("damage_animation");
-    }, 2000);
+    }, 500);
   }
 
   animateShield() {
@@ -166,7 +167,16 @@ export class AppComponent {
 
     setTimeout( ()=> {
       shield.classList.remove("shield_animation");
-    }, 2000);
+    }, 500);
+  }
+
+  animateFadeIn() {
+    let main = document.getElementById('main');
+    main.classList.add("fade_in_animation");
+
+    setTimeout( ()=> {
+      main.classList.remove("fade_in_animation");
+    }, 500);
   }
 
   

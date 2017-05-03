@@ -1,62 +1,64 @@
-<div class="flex-center">
-  <h1>
-    -={{title}}=-
-  </h1>
-</div>
+<div id="main">
+  <div class="flex-center">
+    <h1>
+      -={{title}}=-
+    </h1>
+  </div>
 
-<div class="flex-center">
-  <div *ngIf="health>0">
-    <div class="flex-row">
-      <div>
-        <app-room floor=1 ></app-room>
-      </div>
-      <div>
-        <h3>Hero Stats</h3>
-        <hr/>
-        <div>Health: <span id="health">{{health}}</span> / {{maxHealth}}</div>
-        <div>Shield: <span id="shield">{{shield}}</span></div>
-        <div>Score: {{score}}</div>
-        Log
-        <div class="log">
-          <p *ngFor="let item of log">
-            {{ item }}
-          </p>
+  <div class="flex-center">
+    <div *ngIf="health>0">
+      <div class="flex-row">
+        <div>
+          <app-room floor=1 ></app-room>
+        </div>
+        <div>
+          <h3>Hero Stats</h3>
+          <hr/>
+          <div>Health: <span id="health">{{health}}</span> / {{maxHealth}}</div>
+          <div>Shield: <span id="shield">{{shield}}</span></div>
+          <div>Score: {{score}}</div>
+          Log
+          <div class="log">
+            <p *ngFor="let item of log">
+              {{ item }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
+
+    <div *ngIf="health<=0">
+      Game Over! <br/>
+      Your score was: {{ score }} <br/>
+      <button (click)="initializeHero()">Try again?</button>
+    </div>
   </div>
 
-  <div *ngIf="health<=0">
-    Game Over! <br/>
-    Your score was: {{ score }} <br/>
-    <button (click)="initializeHero()">Try again?</button>
-  </div>
+  <audio id="stairs_sound" >
+    <source src="assets/sounds/movement/stairs/sfx_movement_stairs1loop.wav" type="audio/ogg">
+  </audio>
+
+  <audio id="flip_sound" >
+    <source src="assets/sounds/movement/stairs/sfx_movement_stairs1a.wav" type="audio/ogg">
+  </audio>
+
+  <audio id="potion_sound" >
+    <source src="assets/sounds/general/positive/sfx_sounds_powerup10.wav" type="audio/ogg">
+  </audio>
+
+  <audio id="shield_sound" >
+    <source src="assets/sounds/general/Coins/sfx_coin_single1.wav" type="audio/ogg">
+  </audio>
+
+  <audio id="perfect_block_sound" >
+    <source src="assets/sounds/general/Coins/sfx_coin_single2.wav" type="audio/ogg">
+  </audio>
+
+  <audio id="damage_sound" >
+    <source src="assets/sounds/death_screams/human/sfx_deathscream_human1.wav" type="audio/ogg">
+  </audio>
+
+  <audio id="music" loop>
+    <source src="assets/music/deilou_dungeon.mp3" type="audio/mp3">
+  </audio>
 </div>
-
-<audio id="stairs_sound" >
-  <source src="assets/sounds/movement/stairs/sfx_movement_stairs1loop.wav" type="audio/ogg">
-</audio>
-
-<audio id="flip_sound" >
-  <source src="assets/sounds/movement/stairs/sfx_movement_stairs1a.wav" type="audio/ogg">
-</audio>
-
-<audio id="potion_sound" >
-  <source src="assets/sounds/general/positive/sfx_sounds_powerup10.wav" type="audio/ogg">
-</audio>
-
-<audio id="shield_sound" >
-  <source src="assets/sounds/general/Coins/sfx_coin_single1.wav" type="audio/ogg">
-</audio>
-
-<audio id="perfect_block_sound" >
-  <source src="assets/sounds/general/Coins/sfx_coin_single2.wav" type="audio/ogg">
-</audio>
-
-<audio id="damage_sound" >
-  <source src="assets/sounds/death_screams/human/sfx_deathscream_human1.wav" type="audio/ogg">
-</audio>
-
-<audio id="music" loop>
-  <source src="assets/music/deilou_dungeon.mp3" type="audio/mp3">
-</audio>

@@ -87,6 +87,7 @@ export class RoomComponent implements OnInit {
    **/
   nextFloor() {
     this.playStairsSound();
+    this.animateFadeIn();
     this.floor = `${parseInt(this.floor) + 1}`;
     this.collectPreviousCards();
     this.createFloor();
@@ -181,4 +182,15 @@ export class RoomComponent implements OnInit {
     audio.play();
   }
 
+  animateFadeIn() {
+    console.log("Fading floor");
+    let main = document.getElementById('floor');
+    console.log(main);
+    main.classList.add("fade_in_animation");
+    console.log(main);
+
+    setTimeout( ()=> {
+      main.classList.remove("fade_in_animation");
+    }, 2000);
+  }
 }
