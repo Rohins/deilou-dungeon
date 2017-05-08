@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Deck } from '../deck';
 import { Card } from '../card/card';
 import { CardResolveService } from '../card-resolve.service';
+import { ResetGameService } from '../reset-game.service';
 
 @Component({
   selector: 'app-room',
@@ -32,7 +33,7 @@ export class RoomComponent implements OnInit {
    **/
   public previousCards = new Array<Card>();
 
-  constructor(private _cardResolveService: CardResolveService) { }
+  constructor(private _cardResolveService: CardResolveService, private _resetGameService: ResetGameService) { }
 
   ngOnInit() {
     this.deck = new Deck;
@@ -40,8 +41,6 @@ export class RoomComponent implements OnInit {
 
     this._cardResolveService.cardResolved$.subscribe(
       card => {
-        console.log('Resolved from room');
-
         console.log(this.cardsLeft());
         if (this.cardsLeft() == 0) {
           this.nextFloor();
@@ -91,6 +90,19 @@ export class RoomComponent implements OnInit {
     this.floor = `${parseInt(this.floor) + 1}`;
     this.collectPreviousCards();
     this.createFloor();
+  }
+
+  /**
+   * Reset the floor to 1 when trying again.
+   * Cleanup any cards in the previous stack.
+   **/
+  tryAgain() {
+    this.deck = new Deck;
+    this.previousCards = new Array<Card>();
+    this.floor = 1;
+    this.createFloor();
+
+    this._resetGameService.resetGame();
   }
 
   /**

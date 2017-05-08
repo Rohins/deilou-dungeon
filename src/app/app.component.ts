@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Card } from './card/card';
 import { CardResolveService } from './card-resolve.service';
+import { ResetGameService } from './reset-game.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [CardResolveService]
+  providers: [CardResolveService, ResetGameService]
 })
 export class AppComponent {
   title = 'DEILOU DUNGEON';
@@ -18,7 +19,7 @@ export class AppComponent {
 
   log       = new Array<string>();
 
-  constructor(private _cardResolveService: CardResolveService) { }
+  constructor(private _cardResolveService: CardResolveService, private _resetGameService: ResetGameService) { }
 
   ngOnInit() {
     this._cardResolveService.cardResolved$.subscribe(
@@ -26,9 +27,13 @@ export class AppComponent {
         this.resolveCard(card);
         this.checkIfDead();
       });
+
+    this._resetGameService.resetedGame$.subscribe(
+      reset => {
+        this.initializeHero();
+      });
     this.playMusic();
     this.animateFadeIn();
-
   }
 
   damage(value: number) {
