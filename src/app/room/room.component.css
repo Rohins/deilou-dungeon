@@ -39,6 +39,17 @@ button {
 }
 
 @media screen and (max-height: 900px) {
+    .floor {
+        overflow-y: scroll;
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .floor {
+        overflow-y: scroll;
+        height: 220px;
+    }
 }
 
 @keyframes fade-in {

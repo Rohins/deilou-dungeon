@@ -40,6 +40,12 @@ body {
     width: 256px;
 }
 
+@media screen and (max-width: 480px) {
+    .log {
+        width: 100%;
+    }
+}
+
 .log p {
     padding: 0px;
     margin: 0px;
@@ -56,7 +62,7 @@ body {
 @media screen and (max-width: 480px) {
     .flex-row {
         width: 100%;
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
 }
 
