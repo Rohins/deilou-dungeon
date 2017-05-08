@@ -11,3 +11,17 @@
     position: relative;
 }
 
+@media screen and (max-width: 480px) {
+    .card {
+        position: absolute;
+        left: 16px;
+        top:  23px;
+    }
+
+    .stack {
+        width: 64px;
+        height: 92px;
+        border: 1px solid black;
+        position: relative;
+    }
+}
