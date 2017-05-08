@@ -3,6 +3,7 @@ import { Deck } from '../deck';
 import { Card } from '../card/card';
 import { CardResolveService } from '../card-resolve.service';
 import { ResetGameService } from '../reset-game.service';
+import { ScoreService } from '../score.service';
 
 @Component({
   selector: 'app-room',
@@ -33,7 +34,9 @@ export class RoomComponent implements OnInit {
    **/
   public previousCards = new Array<Card>();
 
-  constructor(private _cardResolveService: CardResolveService, private _resetGameService: ResetGameService) { }
+  constructor(private _cardResolveService: CardResolveService,
+              private _resetGameService: ResetGameService,
+              private _scoreService: ScoreService) { }
 
   ngOnInit() {
     this.deck = new Deck;
@@ -43,6 +46,7 @@ export class RoomComponent implements OnInit {
       card => {
         console.log(this.cardsLeft());
         if (this.cardsLeft() == 0) {
+          this._scoreService.increaseFloor(this.floor);
           this.nextFloor();
         }
       });
