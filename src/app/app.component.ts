@@ -22,6 +22,7 @@ export class AppComponent {
   log       = new Array<string>();
 
   scoreButtonClicked = false;
+  gameBeaten = false;
 
   constructor(private _cardResolveService: CardResolveService, 
               private _resetGameService: ResetGameService,
@@ -44,6 +45,11 @@ export class AppComponent {
     this._scoreService.increasedFloor$.subscribe(
       floor => {
         this.score += 10 * floor;
+        console.log(typeof(floor));
+
+        if (floor == 5) {
+          this.gameBeaten = true;
+        }
       });
     this.playMusic();
     this.animateFadeIn();
@@ -133,6 +139,7 @@ export class AppComponent {
 
   initializeHero() {
     this.scoreButtonClicked = false;
+    this.gameBeaten = false;
     this.maxHealth = 20;
     this.health    = 20; 
     this.shield    = 5;

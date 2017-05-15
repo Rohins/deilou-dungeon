@@ -6,7 +6,7 @@
   </div>
 
   <div class="flex-center">
-    <div *ngIf="health>0">
+    <div *ngIf="health>0 && !gameBeaten">
       <div class="flex-row">
         <div>
           <app-room floor=1 ></app-room>
@@ -29,6 +29,16 @@
 
     <div *ngIf="health<=0">
       <p>Game Over!</p>
+      <p>Your score was: {{ score }} </p>
+      <hr />
+      <button (click)="initializeHero()">Try Again</button>
+      <button (click)="submitScore()" *ngIf="!scoreButtonClicked">Submit Score</button>
+      <hr />
+      <app-high-scores></app-high-scores>
+    </div>
+
+    <div *ngIf="gameBeaten">
+      <p>You Win!</p>
       <p>Your score was: {{ score }} </p>
       <hr />
       <button (click)="initializeHero()">Try Again</button>

@@ -92,6 +92,9 @@ export class RoomComponent implements OnInit {
     this.playStairsSound();
     this.animateFadeIn();
     this.floor = `${parseInt(this.floor) + 1}`;
+    if (this.floor > 5) {
+      console.log("Game Beaten");
+    }
     this.collectPreviousCards();
     this.createFloor();
   }

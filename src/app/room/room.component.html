@@ -50,7 +50,9 @@
   <div *ngIf="floor>5">
     You escaped the dungeon!!!
     <br />
-    <button (click)="tryAgain()">Try Again?</button>
+    <button (click)="tryAgain()">Try Again</button>
+    <button (click)="submitScore()" *ngIf="!scoreButtonClicked">Submit Score</button>
+    <hr />
     <app-high-scores></app-high-scores>
   </div>
 </div>
