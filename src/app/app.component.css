@@ -82,3 +82,14 @@ body {
 .fade_in_animation {
     animation: fade-in 1s;
 }
+
+button {
+    font-family: courier;
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    padding: 4px;
+
+    cursor: pointer;
+    font-size: 1em;
+}

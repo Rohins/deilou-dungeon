@@ -8,6 +8,7 @@ import { CardComponent } from './card/card.component';
 import { RoomComponent } from './room/room.component';
 import { HeroComponent } from './hero/hero.component';
 import { CardStackComponent } from './card-stack/card-stack.component';
+import { HighScoresComponent } from './high-scores/high-scores.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CardStackComponent } from './card-stack/card-stack.component';
     CardComponent,
     RoomComponent,
     HeroComponent,
-    CardStackComponent
+    CardStackComponent,
+    HighScoresComponent
   ],
   imports: [
     BrowserModule,

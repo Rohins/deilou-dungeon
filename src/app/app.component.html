@@ -28,9 +28,13 @@
     </div>
 
     <div *ngIf="health<=0">
-      Game Over! <br/>
-      Your score was: {{ score }} <br/>
-      <button (click)="initializeHero()">Try again?</button>
+      <p>Game Over!</p>
+      <p>Your score was: {{ score }} </p>
+      <hr />
+      <button (click)="initializeHero()">Try Again</button>
+      <button (click)="submitScore()" *ngIf="!scoreButtonClicked">Submit Score</button>
+      <hr />
+      <app-high-scores></app-high-scores>
     </div>
   </div>
 

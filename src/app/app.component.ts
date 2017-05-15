@@ -3,12 +3,13 @@ import { Card } from './card/card';
 import { CardResolveService } from './card-resolve.service';
 import { ResetGameService } from './reset-game.service';
 import { ScoreService } from './score.service';
+import { HighScoreService } from './highscore.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [CardResolveService, ResetGameService, ScoreService]
+  providers: [CardResolveService, ResetGameService, ScoreService, HighScoreService]
 })
 export class AppComponent {
   title = 'DEILOU DUNGEON';
@@ -20,9 +21,13 @@ export class AppComponent {
 
   log       = new Array<string>();
 
+  scoreButtonClicked = false;
+
   constructor(private _cardResolveService: CardResolveService, 
               private _resetGameService: ResetGameService,
-              private _scoreService: ScoreService) { }
+              private _scoreService: ScoreService,
+              private _highScoreService: HighScoreService
+  ) { }
 
   ngOnInit() {
     this._cardResolveService.cardResolved$.subscribe(
@@ -127,11 +132,20 @@ export class AppComponent {
   }
 
   initializeHero() {
+    this.scoreButtonClicked = false;
     this.maxHealth = 20;
     this.health    = 20; 
     this.shield    = 5;
     this.score     = 0;
     this.log       = new Array<string>();
+  }
+
+  submitScore() {
+    let name = prompt("Type your name:");
+
+    this.scoreButtonClicked = true;
+
+    this._highScoreService.create(name, this.score);
   }
 
   logAction(value: string) {
