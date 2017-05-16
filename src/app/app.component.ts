@@ -37,15 +37,9 @@ export class AppComponent {
         this.checkIfDead();
       });
 
-    this._resetGameService.resetedGame$.subscribe(
-      reset => {
-        this.initializeHero();
-      });
-
     this._scoreService.increasedFloor$.subscribe(
       floor => {
         this.score += 10 * floor;
-        console.log(typeof(floor));
 
         if (floor == 5) {
           this.gameBeaten = true;
@@ -145,6 +139,8 @@ export class AppComponent {
     this.shield    = 5;
     this.score     = 0;
     this.log       = new Array<string>();
+
+    this._resetGameService.resetGame();
   }
 
   submitScore() {

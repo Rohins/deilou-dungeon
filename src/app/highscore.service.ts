@@ -26,8 +26,6 @@ export class HighScoreService {
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers});
 
-    console.log({name, score});
-
     return this._http
       .post(this.url, { name, score }, options)
       .subscribe(()=> this.scoreCreatedSource.next());

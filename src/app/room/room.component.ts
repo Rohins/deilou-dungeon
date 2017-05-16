@@ -44,12 +44,13 @@ export class RoomComponent implements OnInit {
 
     this._cardResolveService.cardResolved$.subscribe(
       card => {
-        console.log(this.cardsLeft());
         if (this.cardsLeft() == 0) {
           this._scoreService.increaseFloor(this.floor);
           this.nextFloor();
         }
       });
+
+    this._resetGameService.resetedGame$.subscribe(()=> this.tryAgain()); 
   }
 
   newFloor(floor: number) {
@@ -92,9 +93,6 @@ export class RoomComponent implements OnInit {
     this.playStairsSound();
     this.animateFadeIn();
     this.floor = `${parseInt(this.floor) + 1}`;
-    if (this.floor > 5) {
-      console.log("Game Beaten");
-    }
     this.collectPreviousCards();
     this.createFloor();
   }
@@ -108,8 +106,6 @@ export class RoomComponent implements OnInit {
     this.previousCards = new Array<Card>();
     this.floor = 1;
     this.createFloor();
-
-    this._resetGameService.resetGame();
   }
 
   /**
@@ -202,11 +198,8 @@ export class RoomComponent implements OnInit {
   }
 
   animateFadeIn() {
-    console.log("Fading floor");
     let main = document.getElementById('floor');
-    console.log(main);
     main.classList.add("fade_in_animation");
-    console.log(main);
 
     setTimeout( ()=> {
       main.classList.remove("fade_in_animation");
