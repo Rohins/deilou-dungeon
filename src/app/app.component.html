@@ -12,7 +12,10 @@
           <app-room floor=1 ></app-room>
         </div>
         <div>
-          <h3>Hero Stats</h3>
+          <h3>
+            Hero Stats 
+            <button (click)="toggleSound()">Sound</button>
+          </h3>
           <hr/>
           <div>Health: <span id="health">{{health}}</span> / {{maxHealth}}</div>
           <div>Shield: <span id="shield">{{shield}}</span></div>

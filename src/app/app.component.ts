@@ -180,6 +180,12 @@ export class AppComponent {
     audio.play();
   }
 
+  toggleSound() {
+    let audios = document.getElementsByTagName('audio');
+
+    Array.prototype.forEach.call(audios, (audio) => audio.muted = audio.muted ? false : true);
+  }
+
   animateDamage() {
     let health = document.getElementById('health');
     health.classList.remove("damage_animation");
