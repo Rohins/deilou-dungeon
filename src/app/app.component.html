@@ -27,7 +27,7 @@
       </div>
     </div>
 
-    <div *ngIf="health<=0">
+    <div *ngIf="health <= 0">
       <p>Game Over!</p>
       <p>Your score was: {{ score }} </p>
       <hr />
@@ -37,7 +37,7 @@
       <app-high-scores></app-high-scores>
     </div>
 
-    <div *ngIf="gameBeaten">
+    <div *ngIf="gameBeaten && health > 0">
       <p>You Win!</p>
       <p>Your score was: {{ score }} </p>
       <hr />
