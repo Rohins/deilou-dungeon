@@ -1,5 +1,5 @@
 # DeilouDungeon
-Deilou Dungeon is a card-based roguelike that can be played with a standard deck of cards. Most of the mechanics are inspired by [Donsol](http://wiki.xxiivv.com/Donsol).
+Deilou Dungeon is a card-based roguelike that can be played with a standard deck of cards. Most of the mechanics are inspired by [Donsol](http://wiki.xxiivv.com/Donsol). Go to [Deilou Dungeon](http://deiloudungeon) to play on my server.
 
 ## Mechanics
 Potions (Hearts) will heal you but you can't heal more than your max HP.
